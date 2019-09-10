@@ -67,7 +67,7 @@ The script provides a couple of other parameters you might want to try. Note tha
 
 In order to ensure a fair and consistent protocol, evaluation of your algorithm on FreiHAND is handled through Codalab.
  
-1. Modify `pred.py` to use your method for making shape prediction. The code provided here predicts zeros for all joints and vertices.
+1. Make predictions for the evaluation dataset. The code provided here predicts zeros for all joints and vertices.
     ```
     python pred.py ${DB_PATH}
     ```
@@ -88,6 +88,8 @@ In order to ensure a fair and consistent protocol, evaluation of your algorithm 
     F@5mm=0.0, F@15mm=0.0
     F_aliged@5mm= 0.001, F_aligned@15mm=0.029
     ```
+    
+5. Modify `pred.py` to use your method for making shape prediction.
 
 # Terms of use
 

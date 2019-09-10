@@ -20,7 +20,7 @@ See the [project page](https://lmb.informatik.uni-freiburg.de/projects/freihand/
     ```
     virtualenv -p python2.7 ./venv
     source venv/bin/activate
-    pip install numpy matplotlib scikit-image transforms3d tqdm opencv-python
+    pip install numpy matplotlib scikit-image transforms3d tqdm opencv-python cython
     ```
     
 3. Assuming ${DB_PATH} is the path to where you unpacked the dataset (path to where _./training/_ and _./evaluation/_ folder branch off). 
@@ -60,7 +60,6 @@ The script provides a couple of other parameters you might want to try. Note tha
 4. Visualize samples with rendered MANO shapes
     ```
     python view_samples.py ${DB_PATH} --mano
-    python view_samples.py ${DB_PATH} --mano --show_eval
     ```
     
 # Evaluate on the dataset
@@ -89,7 +88,7 @@ In order to ensure a fair and consistent protocol, evaluation of your algorithm 
     F_aliged@5mm= 0.001, F_aligned@15mm=0.029
     ```
     
-5. Modify `pred.py` to use your method for making shape prediction.
+5. Modify `pred.py` to use your method for making shape prediction and see how well it performs compared to the baselines in our [leaderboard](https://competitions.codalab.org/competitions/21218#results).
 
 # Terms of use
 

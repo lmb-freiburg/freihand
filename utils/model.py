@@ -4,9 +4,12 @@ import pickle
 import chumpy as ch
 import numpy as np
 from opendr.lighting import LambertianPointLight
-from utils.mano_core.mano_loader import load_model
-from utils.mano_core.lbs import global_rigid_transformation
-from utils.mano_utils import get_keypoints_from_mesh_ch
+try:
+    from utils.mano_core.mano_loader import load_model
+    from utils.mano_core.lbs import global_rigid_transformation
+    from utils.mano_utils import get_keypoints_from_mesh_ch
+except ImportError as e:
+    raise ImportError('%s \nDid you set up the repository for advanced use?' % e)
 
 
 renderer = None

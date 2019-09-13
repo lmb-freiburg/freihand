@@ -76,7 +76,7 @@ In order to ensure a fair and consistent protocol, evaluation of your algorithm 
     zip -j pred.zip pred.json
     ```
     
-3. Upload `pred.zip` to our [Codalab competition](https://competitions.codalab.org/competitions/21218) website (Participate -> Submit)
+3. Upload `pred.zip` to our [Codalab competition](https://competitions.codalab.org/competitions/21238) website (Participate -> Submit)
 
 4. Wait for the evaluation server to report back your results and publish your results to the leaderboard. The zero predictor will give you the following results
     ```
@@ -88,7 +88,7 @@ In order to ensure a fair and consistent protocol, evaluation of your algorithm 
     F_aliged@5mm= 0.001, F_aligned@15mm=0.029
     ```
     
-5. Modify `pred.py` to use your method for making shape prediction and see how well it performs compared to the baselines in our [leaderboard](https://competitions.codalab.org/competitions/21218#results).
+5. Modify `pred.py` to use your method for making shape prediction and see how well it performs compared to the baselines in our [leaderboard](https://competitions.codalab.org/competitions/21238#results).
 
 # Terms of use
 

@@ -155,6 +155,27 @@ def createHTML(outputDir, curve_list):
     htmlfile.close()
 
 
+def _search_pred_file(pred_path, pred_file_name):
+    """ Tries to select the prediction file. Useful, in case people deviate from the canonical prediction file name. """
+    pred_file = os.path.join(pred_path, pred_file_name)
+    if os.path.exists(pred_file):
+        # if the given prediction file exists we are happy
+        return pred_file
+
+    print('Predition file "%s" was NOT found' % pred_file_name)
+
+    # search for a file to use
+    print('Trying to locate the prediction file automatically ...')
+    files = [os.path.join(pred_path, x) for x in os.listdir(pred_path) if x.endswith('.json')]
+    if len(files) == 1:
+        pred_file_name = files[0]
+        print('Found file "%s"' % pred_file_name)
+        return pred_file_name
+    else:
+        print('Found %d candidate files for evaluation' % len(files))
+        raise Exception('Giving up, because its not clear which file to evaluate.')
+
+
 def main(gt_path, pred_path, output_dir, pred_file_name=None, set_name=None):
     if pred_file_name is None:
         pred_file_name = 'pred.json'
@@ -165,7 +186,7 @@ def main(gt_path, pred_path, output_dir, pred_file_name=None, set_name=None):
     xyz_list, verts_list = json_load(os.path.join(gt_path, '%s_xyz.json' % set_name)), json_load(os.path.join(gt_path, '%s_verts.json' % set_name))
 
     # load predicted values
-    pred_file = os.path.join(pred_path, pred_file_name)
+    pred_file = _search_pred_file(pred_path, pred_file_name)
     print('Loading predictions from %s' % pred_file)
     with open(pred_file, 'r') as fi:
         pred = json.load(fi)

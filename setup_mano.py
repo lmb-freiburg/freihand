@@ -42,6 +42,7 @@ def _patch_mano_loader():
             (62, 'def load_model(fname_or_dict, ncomps=6, flat_hand_mean=False, v_template=None, use_pca=True):'),
             (66, '    from verts import verts_core'),
             (80, '    if use_pca:\n        hands_components = smpl_data[''hands_components'']  # PCA components\n    else:\n        hands_components = np.eye(45)  # directly modify 15x3 articulation angles'),
+            (131,'    result.dd = dd'),
         ]
     ))
 

@@ -80,16 +80,17 @@ class HandModel(object):
 
     def _calc_coords(self):
         # calculate joint location and rotation
-        A, A_global = global_rigid_transformation(self.model.fullpose, self.model.J, self.model.kintree_table, ch)
-        Jtr = ch.vstack([g[:3, 3] for g in A_global])
-        R = [g[:3, :3] for g in A_global]
-        coords_kp_xyz = get_keypoints_from_mesh_ch(self.model, Jtr)
-        coords_kp_xyz = coords_kp_xyz + self.global_trans
+        V, _ = self._get_verts_faces()
+        J_regressor = self.model.dd['J_regressor']
+        Jtr_x = ch.MatVecMult(J_regressor, V[:, 0])
+        Jtr_y = ch.MatVecMult(J_regressor, V[:, 1])
+        Jtr_z = ch.MatVecMult(J_regressor, V[:, 2])
+        Jtr = ch.vstack([Jtr_x, Jtr_y, Jtr_z]).T
+        coords_kp_xyz = get_keypoints_from_mesh_ch(V, Jtr)
         return coords_kp_xyz
 
     def pose_by_root(self, xyz_root, poses, shapes, root_id=9):
         """ Poses the MANO model according to the root keypoint given. """
-        # assert 0, "I think this is buggy."
         self.model.pose[:] = poses  # set estimated articulation
         self.model.betas[:] = shapes  # set estimated shape
         self.global_trans[:] = 0.0

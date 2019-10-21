@@ -50,6 +50,8 @@ def show_training_samples(base_path, version, num2show=None, render_mano=False):
         ax2.imshow(msk if msk_rendered is None else msk_rendered)
         plot_hand(ax1, uv, order='uv')
         plot_hand(ax2, uv, order='uv')
+        ax1.axis('off')
+        ax2.axis('off')
         plt.show()
 
 
@@ -68,6 +70,7 @@ def show_eval_samples(base_path, num2show=None):
         fig = plt.figure()
         ax1 = fig.add_subplot(111)
         ax1.imshow(img)
+        ax1.axis('off')
         plt.show()
 
 

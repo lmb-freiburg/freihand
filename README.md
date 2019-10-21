@@ -25,7 +25,7 @@ See the [project page](https://lmb.informatik.uni-freiburg.de/projects/freihand/
     
 3. Assuming ${DB_PATH} is the path to where you unpacked the dataset (path to where _./training/_ and _./evaluation/_ folder branch off). 
 This should enable you to run the following to show some dataset samples.
-In my case ${DB_PATH} holds the value `~/FreiHAND_pub_v1/`
+In my case ${DB_PATH} holds the value `~/FreiHAND_pub_v2/`
     ```
     python view_samples.py ${DB_PATH}
     python view_samples.py ${DB_PATH} --show_eval 

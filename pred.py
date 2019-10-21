@@ -60,7 +60,9 @@ def pred_template(img, K, scale):
     """ Predict joints and vertices from a given sample.
         img: (224, 224, 30 RGB image.
         K: (3, 3) camera intrinsic matrix.
-        scale: () scalar metric length of the reference bone.
+        scale: () scalar metric length of the reference bone,
+                  which was calculated as np.linalg.norm(xyz[9] - xyz[10], 2),
+                  i.e. it is the length of the proximal phalangal bone of the middle finger.
     """
     # TODO: Put your algorithm here, which computes (metric) 3D joint coordinates and 3D vertex positions
     xyz = np.zeros((21, 3))  # 3D coordinates of the 21 joints

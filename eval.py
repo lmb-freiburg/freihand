@@ -325,15 +325,30 @@ def main(gt_path, pred_path, output_dir, pred_file_name=None, set_name=None):
             fo.write('%s\n' % t)
     print('Scores written to: %s' % score_path)
 
+    # scale to cm
+    thresh_xyz *= 100.0
+    thresh_xyz_al *= 100.0
+    thresh_mesh *= 100.0
+    thresh_mesh_al *= 100.0
+
     createHTML(
         output_dir,
         [
-            curve(thresh_xyz*100, pck_xyz, 'Distance in cm', 'Percentage of correct keypoints', 'PCK curve for aligned keypoint error'),
-            curve(thresh_xyz_al*100, pck_xyz_al, 'Distance in cm', 'Percentage of correct keypoints', 'PCK curve for aligned keypoint error'),
-            curve(thresh_mesh*100, pck_mesh, 'Distance in cm', 'Percentage of correct vertices', 'PCV curve for mesh error'),
-            curve(thresh_mesh_al*100, pck_mesh_al, 'Distance in cm', 'Percentage of correct vertices', 'PCV curve for aligned mesh error')
+            curve(thresh_xyz, pck_xyz, 'Distance in cm', 'Percentage of correct keypoints', 'PCK curve for keypoint error'),
+            curve(thresh_xyz_al, pck_xyz_al, 'Distance in cm', 'Percentage of correct keypoints', 'PCK curve for aligned keypoint error'),
+            curve(thresh_mesh, pck_mesh, 'Distance in cm', 'Percentage of correct vertices', 'PCV curve for mesh error'),
+            curve(thresh_mesh_al, pck_mesh_al, 'Distance in cm', 'Percentage of correct vertices', 'PCV curve for aligned mesh error')
         ]
     )
+
+    pck_curve_data = {
+        'xyz': [thresh_xyz.tolist(), pck_xyz.tolist()],
+        'xyz_al': [thresh_xyz_al.tolist(), pck_xyz_al.tolist()],
+        'mesh': [thresh_mesh.tolist(), pck_mesh.tolist()],
+        'mesh_al': [thresh_mesh_al.tolist(), pck_mesh_al.tolist()],
+    }
+    with open('pck_data.json', 'w') as fo:
+        json.dump(pck_curve_data, fo)
 
     print('Evaluation complete.')
 

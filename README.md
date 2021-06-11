@@ -12,6 +12,10 @@ This repository contains a collection of scripts that show how the dataset can b
 See the [project page](https://lmb.informatik.uni-freiburg.de/projects/freihand/) for additional information.
 
 
+# New:exclamation:
+An extendend version of this dataset, with calibration data and multiple-views, is released in [HanCo](https://lmb.informatik.uni-freiburg.de/projects/contra-hand/).
+
+
 # Basic setup
 
 1. Download the dataset. See project page for instructions.

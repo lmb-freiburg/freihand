@@ -14,6 +14,7 @@ See the [project page](https://lmb.informatik.uni-freiburg.de/projects/freihand/
 
 # New:exclamation:
 An extendend version of this dataset, with calibration data and multiple-views, is released in [HanCo](https://lmb.informatik.uni-freiburg.de/projects/contra-hand/).
+Due to ungoing problems with the Codalab evaluation server we have decided to release the evaluation split annotations publicly on our [dataset page](https://lmb.informatik.uni-freiburg.de/resources/datasets/FreihandDataset.en.html).
 
 
 # Basic setup
@@ -67,6 +68,8 @@ The script provides a couple of other parameters you might want to try. Note tha
     ```
     
 # Evaluate on the dataset
+
+**Update**: Due to ungoing problems with the Codalab evaluation server we have decided to release the evaluation split annotations publicly on our [dataset page](https://lmb.informatik.uni-freiburg.de/resources/datasets/FreihandDataset.en.html).
 
 In order to ensure a fair and consistent protocol, evaluation of your algorithm on FreiHAND is handled through Codalab.
  
